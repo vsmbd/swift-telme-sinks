@@ -13,10 +13,10 @@ import Foundation
 public struct RetryPolicy: Sendable {
 	// MARK: + Public scope
 
-	public var maxAttempts: Int
-	public var initialDelay: TimeInterval
-	public var maxDelay: TimeInterval
-	public var multiplier: Double
+	public let maxAttempts: Int
+	public let initialDelay: TimeInterval
+	public let maxDelay: TimeInterval
+	public let multiplier: Double
 
 	public init(
 		maxAttempts: Int = 3,

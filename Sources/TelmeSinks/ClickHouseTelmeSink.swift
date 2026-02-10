@@ -66,7 +66,7 @@ public final class ClickHouseTelmeSink: TelmeRecordSink,
 		let sendNanos = MonotonicNanostamp.now.nanoseconds
 		guard let bodyData = buildBody(records: records, sendMonoNanos: sendNanos) else { return }
 
-		var headers = HTTPHeaders(config.headers)
+		var headers = config.headers
 		headers.setValue("application/json", for: Key.contentType)
 
 		let request = HTTPRequest(
@@ -126,7 +126,12 @@ public final class ClickHouseTelmeSink: TelmeRecordSink,
 			recordsArray.append(recordWithSend)
 		}
 
-		var sessionFields = Dictionary(uniqueKeysWithValues: config.session.map { ($0.key, JSON.string($0.value)) })
+		var sessionFields: [String: JSON]
+		if case .object(let fields) = config.session {
+			sessionFields = fields
+		} else {
+			sessionFields = [:]
+		}
 		sessionFields[Key.sendMonoNanos] = .int(Int(truncatingIfNeeded: sendMonoNanos))
 		let sessionJSON: JSON = .object(sessionFields)
 		let bodyJSON: JSON = .object([

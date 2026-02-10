@@ -53,7 +53,10 @@ let package = Package(
 		),
 		.testTarget(
 			name: "TelmeSinksTests",
-			dependencies: ["TelmeSinks"],
+			dependencies: [
+				"TelmeSinks",
+				.product(name: "JSON", package: "swift-json"),
+			],
 			path: "Tests/TelmeSinksTests"
 		)
 	]

@@ -13,7 +13,7 @@ import Foundation
 public struct BatchPolicy: Sendable {
 	// MARK: + Public scope
 
-	public var maxRecordCount: Int
+	public let maxRecordCount: Int
 
 	public init(maxRecordCount: Int = 100) {
 		self.maxRecordCount = max(1, maxRecordCount)

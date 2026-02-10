@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import HTTPCore
+import JSON
 
 // MARK: - ClickHouseTelmeSink.Config
 
@@ -15,16 +17,18 @@ extension ClickHouseTelmeSink {
 		// MARK: + Public scope
 
 		/// Ingest endpoint URL (e.g. reverse proxy that receives session + records).
-		public var endpoint: URL
+		public let endpoint: URL
+
 		/// Request headers (e.g. Authorization). Sink sets Content-Type: application/json when sending.
-		public var headers: [String: String]
-		/// Top-level "session" dictionary in the JSON body. Passed as-is to the proxy.
-		public var session: [String: String]
+		public let headers: HTTPHeaders
+
+		/// Top-level "session" object in the JSON body. Passed as-is to the proxy; sink merges send_mono_nanos per batch.
+		public let session: JSON
 
 		public init(
 			endpoint: URL,
-			headers: [String: String] = [:],
-			session: [String: String] = [:]
+			headers: HTTPHeaders = [:],
+			session: JSON = .object([:])
 		) {
 			self.endpoint = endpoint
 			self.headers = headers
