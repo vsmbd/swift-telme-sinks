@@ -1,0 +1,51 @@
+{
+  "originHash" : "2ff77c8cadf440c67fb61db890266a18d6bb8dff52d280b4f78eb88edf2cf74b",
+  "pins" : [
+    {
+      "identity" : "swift-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vsmbd/swift-core.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "adaffffaf219c6149268f2bfa02512aeb2da841f"
+      }
+    },
+    {
+      "identity" : "swift-eventdispatch",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vsmbd/swift-eventdispatch.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "36c4083118d35100ea86f411a61330a9b745bfa3"
+      }
+    },
+    {
+      "identity" : "swift-http-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vsmbd/swift-http-core.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f5dcaf2f185726188d41d4ed984a7219e05ce905"
+      }
+    },
+    {
+      "identity" : "swift-json",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vsmbd/swift-json.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "bf40e60dc2b57f1a7b131a4b6d38de57e426355a"
+      }
+    },
+    {
+      "identity" : "swift-telme",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vsmbd/swift-telme.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "baa99e69ec87d95dab8a10f0775c7633c8872b20"
+      }
+    }
+  ],
+  "version" : 3
+}

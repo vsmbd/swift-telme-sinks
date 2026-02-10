@@ -3,7 +3,7 @@
 ## Primary goals
 
 1. **Ship a default ClickHouse sink**
-   - Provide `TelmeClickHouseSink` that can ingest Telme records into a ClickHouse-backed observability sandbox.
+   - Provide `ClickHouseTelmeSink` that can ingest Telme records into a ClickHouse-backed observability sandbox.
    - Work with either:
      - ClickHouse HTTP insert endpoint directly, or
      - a local ingest proxy (recommended when ClickHouse must remain localhost-only).

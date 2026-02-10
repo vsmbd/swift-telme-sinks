@@ -4,14 +4,14 @@ A small, opinionated package that ships **default sinks** for Telme.
 
 Right now it contains a single sink:
 
-- `TelmeClickHouseSink`: batches Telme records and ships them over HTTP as **[JSON]** suitable for ClickHouse ingestion (direct to ClickHouse HTTP interface or to your own ingest proxy that forwards to ClickHouse).
+- `ClickHouseTelmeSink`: batches Telme records and ships them over HTTP as **[JSON]** suitable for ClickHouse ingestion (direct to ClickHouse HTTP interface or to your own ingest proxy that forwards to ClickHouse).
 
 This package intentionally keeps the surface area small so you can evolve your Telme schema and transport policies without turning `swift-telme` into an I/O-heavy dependency magnet.
 
 ## What this repo contains
 
 - `TelmeSinks` target
-  - `TelmeClickHouseSink`
+  - `ClickHouseTelmeSink`
   - small configuration types (`Config`, `BatchPolicy`, `RetryPolicy`)
   - minimal protocol expectations for an injected `HTTPClient`
 
@@ -22,7 +22,7 @@ You inject an `HTTPClient` that implements your networking contract (e.g. `swift
 ### Suggested initializer shape
 
 ```swift
-public final class TelmeClickHouseSink {
+public final class ClickHouseTelmeSink {
     public struct Config: Sendable {
         public var endpoint: URL              // e.g. https://<tunnel>/ingest
         public var headers: [String: String]  // e.g. Authorization, Content-Type
