@@ -126,12 +126,7 @@ public final class ClickHouseTelmeSink: TelmeRecordSink,
 			recordsArray.append(recordWithSend)
 		}
 
-		var sessionFields: [String: JSON]
-		if case .object(let fields) = config.session {
-			sessionFields = fields
-		} else {
-			sessionFields = [:]
-		}
+		var sessionFields = config.session
 		sessionFields[Key.sendMonoNanos] = .int(Int(truncatingIfNeeded: sendMonoNanos))
 		let sessionJSON: JSON = .object(sessionFields)
 		let bodyJSON: JSON = .object([

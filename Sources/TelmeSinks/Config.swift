@@ -23,12 +23,12 @@ extension ClickHouseTelmeSink {
 		public let headers: HTTPHeaders
 
 		/// Top-level "session" object in the JSON body. Passed as-is to the proxy; sink merges send_mono_nanos per batch.
-		public let session: JSON
+		public let session: [String: JSON]
 
 		public init(
 			endpoint: URL,
 			headers: HTTPHeaders = [:],
-			session: JSON = .object([:])
+			session: [String: JSON] = [:]
 		) {
 			self.endpoint = endpoint
 			self.headers = headers

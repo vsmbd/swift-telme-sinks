@@ -18,17 +18,11 @@ struct ClickHouseTelmeSinkTests {
 		let config = ClickHouseTelmeSink.Config(
 			endpoint: url,
 			headers: ["Authorization": "Bearer x"],
-			session: JSON.object(["app": JSON.string("test")])
+			session: ["app": JSON.string("test")]
 		)
-
 		#expect(config.endpoint == url)
 		#expect(config.headers.value(for: "Authorization") == "Bearer x")
-
-		if case .object(let fields) = config.session {
-			#expect(fields["app"] == JSON.string("test"))
-		} else {
-			#expect(Bool(false), "session should be a JSON object")
-		}
+		#expect(config.session["app"] == JSON.string("test"))
 	}
 
 	@Test("BatchPolicy default maxRecordCount at least 1")
