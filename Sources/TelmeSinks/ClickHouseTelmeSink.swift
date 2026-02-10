@@ -33,7 +33,11 @@ public final class ClickHouseTelmeSink: TelmeRecordSink,
 	private let retryPolicy: RetryPolicy
 	private var buffer: [TelmeRecord] = []
 	private let lock: NSLock = .init()
-	private let encoder: JSONEncoder = .init()
+	private let encoder: JSONEncoder = {
+		let enc = JSONEncoder()
+		enc.keyEncodingStrategy = .convertToSnakeCase
+		return enc
+	}()
 
 	private func appendAndMaybeFlush(_ records: [TelmeRecord]) {
 		lock.lock()
